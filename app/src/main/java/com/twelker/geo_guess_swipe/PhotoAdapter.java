@@ -21,7 +21,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoViewHolder> {
 
     @Override
     public PhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_geo_guess_swipe, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_cell, parent, false);
         return new PhotoViewHolder(view);
     }
 
@@ -31,7 +31,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoViewHolder> {
         final Photos photos = listPhotos.get(position);
         // The holder argument is used to reference the views inside the viewHolder
         // Populate the views with the data from the list
-        holder.textView.setText(photos.getmPhotoName());
         holder.photoImage.setImageResource(photos.getmPhotoImageName());
     }
 

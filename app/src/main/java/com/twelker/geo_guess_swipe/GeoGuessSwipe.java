@@ -16,8 +16,6 @@ import java.util.List;
 
 public class GeoGuessSwipe extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +23,13 @@ public class GeoGuessSwipe extends AppCompatActivity {
 
         List<Photos> mPhotos = new ArrayList<>();
 
-        for(int i = 0; i < Photos.Imagesnames.length; i++){
-            mPhotos.add(new Photos(Photos.Imagesnames[i], Photos.Europe[i]));
+        for (int i = 0; i < Photos.Europe.length; i++) {
+            mPhotos.add(new Photos(Photos.Europe[i]));
         }
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        RecyclerView.LayoutManager mLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+        RecyclerView.LayoutManager mLayoutManager = new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         PhotoAdapter mAdapter = new PhotoAdapter(this, mPhotos);
@@ -55,9 +53,11 @@ public class GeoGuessSwipe extends AppCompatActivity {
                 public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                     //Get the index corresponding to the selected position
                     int position = (viewHolder.getAdapterPosition());
-                    mAdapter.notifyItemRemoved(position);                }
+                    //mReminders.remove(position);
+                    mAdapter.notifyItemRemoved(position);
+                }
             };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(mRecyclerView);*/
+        itemTouchHelper.attachToRecyclerView(mRecyclerView); */
     }
 }

@@ -7,15 +7,12 @@ import android.widget.TextView;
 
 public class PhotoViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView textView;
     public ImageView photoImage;
     public View view;
 
     public PhotoViewHolder(View itemView) {
         super(itemView);
-        photoImage =  itemView.findViewById(R.id.recyclerView);
-        textView = itemView.findViewById(R.id.textView);
+        photoImage = (ImageView) itemView.findViewById(R.id.imageView);
         view = itemView;
     }
 }
-
