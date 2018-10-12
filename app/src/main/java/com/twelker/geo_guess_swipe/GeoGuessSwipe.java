@@ -9,18 +9,21 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GeoGuessSwipe extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_geo_guess_swipe);
 
-        List<Photos> mPhotos = new ArrayList<>();
+        final List<Photos> mPhotos = new ArrayList<>();
 
         for (int i = 0; i < Photos.Europe.length; i++) {
             mPhotos.add(new Photos(Photos.Europe[i]));
@@ -52,15 +55,13 @@ public class GeoGuessSwipe extends AppCompatActivity {
                 public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                     //Get the index corresponding to the selected position
                     int position = (viewHolder.getAdapterPosition());
-                    //mReminders.remove(position);
-                    //mAdapter.notifyItemRemoved(position);
-
-                    /*
-                    public void messageSwiped (View v){
-                        if(ItemTouchHelper.RIGHT == 1){
-                            Snackbar.make(v, "Swiped right",Snackbar.LENGTH_SHORT).setAction("Action",null).show();
-                        }
-                    }*/
+                    if(Photos.InEurope[position] && swipeDir == 4){
+                        Toast toast = Toast.makeText(getApplicationContext(), "Correct", Toast.LENGTH_SHORT); toast.show();
+                    } else if (!Photos.InEurope[position] && swipeDir == 8){
+                        Toast toast = Toast.makeText(getApplicationContext(), "Correct", Toast.LENGTH_SHORT); toast.show();
+                    } else {
+                        Toast toast = Toast.makeText(getApplicationContext(), "InCorrect", Toast.LENGTH_SHORT); toast.show();
+                    }
                 }
             };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);

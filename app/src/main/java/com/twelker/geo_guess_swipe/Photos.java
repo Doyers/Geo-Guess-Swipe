@@ -32,4 +32,14 @@ public class Photos {
             R.drawable.img7_yes_malta,
             R.drawable.img8_no_thailand
     };
+    public static final boolean[] InEurope = {
+            true,
+            false,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false
+    };
 }
